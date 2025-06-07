@@ -12,7 +12,7 @@ class HashTable {
 public:
     virtual void insert(int key, int value) = 0;
     virtual void remove(int key) = 0;
-    virtual int getSize() const = 0;  // nowa metoda do rozmiaru tablicy
+    virtual int getSize() const = 0;  
     virtual ~HashTable() {}
 };
 
@@ -29,7 +29,7 @@ public:
         int idx = hash(key);
         for(auto &kv : table[idx]){
             if(kv.first == key){
-                kv.second = value; // nadpisz wartość jeśli klucz istnieje
+                kv.second = value; 
                 return;
             }
         }
@@ -81,7 +81,7 @@ public:
                 return;
             }
         }
-        // tablica pełna - pomijamy rozbudowę
+        
     }
 
     void remove(int key) override {
@@ -129,7 +129,7 @@ public:
             swap(curKey, table2[pos2].first);
             swap(curVal, table2[pos2].second);
         }
-        // jeśli nie udało się włożyć - pomijamy rozbudowę
+        // jeśli nie udało się włożyć - pomijamy 
     }
 
     void remove(int key) override {
@@ -153,7 +153,7 @@ public:
 void runTest(HashTable &ht, vector<int> &keys, string name) {
     cout << "Testowanie: " << name << endl;
 
-    // Optymistyczny - dodawanie i usuwanie unikalnych kluczy, które nie kolidują (w teorii)
+    // Optymistyczny - dodawanie i usuwanie unikalnych kluczy, które nie kolidują 
     {
         auto start = high_resolution_clock::now();
         for(int k : keys){
@@ -230,7 +230,7 @@ int main() {
         cout << "Rozmiar tablicy: " << size << endl;
 
         vector<int> keys(size);
-        for(int i=0; i<size; ++i) keys[i] = i*2+1; // klucze nieparzyste
+        for(int i=0; i<size; ++i) keys[i] = i*2+1; 
 
         SeparateChaining sc(size);
         LinearProbing lp(size);
